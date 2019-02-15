@@ -9,10 +9,13 @@ feature 'When a user visits a snack show page' do
 
     visit snack_path(snack)
 
+save_and_open_page
+
     expect(page).to have_content(snack.name)
     expect(page).to have_content(snack.price)
-    expect(page).to have_content(snack.machines)
-    expect(page).to have_content(snack.machines.average_price)
-    expect(page).to have_content(snack.machine.count)
+    expect(page).to have_content(owner.name)
+    expect(page).to have_content(dons.location)
+    expect(page).to have_content("Average Price: #{dons.average_price}")
+    expect(page).to have_content("Kinds Of Items: #{dons.item_count}")
   end
 end

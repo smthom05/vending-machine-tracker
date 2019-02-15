@@ -15,5 +15,15 @@ describe Machine, type: :model do
 
       expect(dons.average_price).to eq(1.5)
     end
+
+    it 'should add up the prices of all items and return the average' do
+      owner = Owner.create(name: "Sam's Snacks")
+      dons  = owner.machines.create(location: "Don's Mixed Drinks")
+      snack = dons.snacks.create(name: 'chips', price: 1)
+      snack_2 = dons.snacks.create(name: 'candy', price: 3)
+      snack_3 = dons.snacks.create(name: 'cookie', price: 5)
+
+      expect(dons.item_count).to eq(3)
+    end
   end
 end
